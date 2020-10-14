@@ -1,6 +1,7 @@
 #Plane coeffecient Data 
 import numpy as np
 from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
 #AOA 
 alpha = np.array([-16,-12,-8,-4,-2,0,2,4,8,12])
 
@@ -22,3 +23,17 @@ CL_el = np.array([-0.051000000000000,-0.038000000000000, 0, 0.038000000000000, 0
 
 CM_el = np.array([0.084200000000000, 0.060100000000000,-0.000100000000000,-0.060100000000000,-0.0])
 
+def plot():
+	fig, (ax1,ax2,ax3) = plt.subplots(3, sharex=True)
+	ax1.set(ylabel='CD_wing')
+	ax1.plot(alpha,CD_wing,'rx')
+	ax2.set(ylabel='CL_wing')
+	ax2.plot(alpha,CL_wing,'bx')
+	ax3.set(ylabel='CM_wing')
+	ax3.plot(alpha,CM_wing,'gx')
+	fig2, (ax4,ax5) = plt.subplots(2, sharex=True)
+	ax4.set(ylabel='CL_el')
+	ax4.plot(delta_el,CL_el,'yx')
+	ax5.set(ylabel='CM_el')
+	ax5.plot(delta_el,CM_el,'cx')
+	plt.show()
